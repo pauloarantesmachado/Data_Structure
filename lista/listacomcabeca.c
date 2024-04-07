@@ -30,6 +30,17 @@ void delete(Cel *lst){
     free(remove);
 }
 
+Cel* search(Cel* lst, int y){
+    Cel* p;
+    p = lst;
+    while (p!=NULL && p->numero != y)
+    {
+        p = p ->seg;
+    }
+    return p;
+    
+}
+
 int main() {
 
     Cel *cabeca;
@@ -42,10 +53,12 @@ int main() {
     insere(cabeca, 1);
     insere(cabeca, 0);
     
-    // printList(cabeca);
+    printList(cabeca);
 
     delete(cabeca);
 
+    Cel* p = search(cabeca, 10);
+    printf(" this is o number %d\n", p ->numero);
     printList(cabeca);
 }
 
