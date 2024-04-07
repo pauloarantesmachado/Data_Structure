@@ -16,7 +16,7 @@ void insere(Cel *lst,int x){
     
 }
 
-void printList (Cel *lst){
+void printList(Cel *lst){
     if(lst ->seg!= NULL){
         printf("%d\n", lst ->seg->numero);
         printList(lst->seg);
@@ -41,6 +41,18 @@ Cel* search(Cel* lst, int y){
     
 }
 
+int size(Cel*lst){
+    Cel* p;
+    p = lst ->seg;
+    int cont;
+    while (p!=NULL)
+    {
+        cont +=1;
+        p = p ->seg;
+    }
+    return cont;
+}
+
 int main() {
 
     Cel *cabeca;
@@ -55,11 +67,14 @@ int main() {
     
     printList(cabeca);
 
-    delete(cabeca);
+    // delete(cabeca);
 
     Cel* p = search(cabeca, 10);
     printf(" this is o number %d\n", p ->numero);
     printList(cabeca);
+
+    int tamanho = size(cabeca);
+    printf("The size is : %d\n", tamanho);
 }
 
 
