@@ -16,30 +16,21 @@ void insere(Cel *lst,int x){
     
 }
 
-void printList(Cel *lst){
-    if(lst!= NULL){
-        printf("%d\n", lst ->numero);
-        printList(lst->seg);
+void printPilha(Cel *lst){
+    if(lst ->seg!= NULL){
+        printf("%d\n", lst ->seg->numero);
+        printPilha(lst->seg);
     }
 }
 
-void delete(Cel *lst){
+int delete(Cel *lst){
     Cel* remove;
     remove = lst ->seg;
     lst ->seg = remove ->seg;
     free(remove);
+    return remove ->numero;
 }
 
-Cel* search(Cel* lst, int y){
-    Cel* p;
-    p = lst;
-    while (p!=NULL && p->numero != y)
-    {
-        p = p ->seg;
-    }
-    return p;
-    
-}
 
 int size(Cel*lst){
     Cel* p;
@@ -64,20 +55,8 @@ int main() {
     insere(cabeca, 5);
     insere(cabeca, 1);
     insere(cabeca, 0);
-    
-    printList(cabeca);
 
-    // delete(cabeca);
-
-    Cel* p = search(cabeca, 10);
-    printf(" this is o number %d\n", p ->numero);
-    printList(cabeca);
-
-    int tamanho = size(cabeca);
-    printf("The size is : %d\n", tamanho);
+    int topo = delete(cabeca);
+    int topo2 = delete(cabeca);
+   printPilha(cabeca);
 }
-
-
-
-
-
